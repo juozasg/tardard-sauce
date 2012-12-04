@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+if ARGV[0].nil? or ARGV[0] == "-h"
+  puts "USAGE: ghopen <github clone url>"
+  exit
+end
+
+require 'fileutils'
+TMP_BASE = "/tmp/ghopen"
+
+url = ARGV[0]
+
+name, author = url.split('/').reverse
+name.gsub!('.git', '')
+
+author_dir = TMP_BASE + "/" + author
+repo_dir = author_dir + "/" + name
+
+if File.exists?(repo_dir + '/.git')
+  `cd '#{repo_dir}'; git pull;`
+else
+  `git clone '#{url}' '#{repo_dir}'`
+end
+
+`se #{repo_dir}`
