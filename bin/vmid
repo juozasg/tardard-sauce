@@ -1,0 +1,10 @@
+#!/bin/sh
+# prints VM id for a virtualbox vm(s) with name matching a pattern
+
+if [ $# -lt 1 ] ; then
+   echo "USAGE: vmid <vm-name-or-pattern>"
+   exit 1
+fi
+
+VBoxManage list vms | grep $1 | cut -d '{' -f 2 | rev |cut -c 2-|rev
+
