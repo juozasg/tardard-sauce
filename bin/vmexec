@@ -1,0 +1,10 @@
+#!/bin/sh
+# executes a command on vagrant VM using VBoxManage guestcontrol
+
+if [ $# -lt 2 ] ; then
+   echo "USAGE: vmexec <vm-name> <command>"
+   exit 1
+fi
+
+VBoxManage guestcontrol $1 execute --username vagrant --password vagrant --wait-stdout --wait-stderr --image $2
+echo
