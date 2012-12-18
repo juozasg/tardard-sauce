@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# pulls from all folders 
+for x in *; do echo $x; cd $x; git pull; cd ..; done
