@@ -1,4 +1,6 @@
 #!/bin/sh
 
 # pulls from all folders
+pwd=`pwd`
 for x in *; do echo  "\033[1;33m$x\033[00m"; cd $x; git pull; cd ..; done
+cd $pwd

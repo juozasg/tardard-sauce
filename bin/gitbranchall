@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# pulls from all folders
+pwd=`pwd`
+for x in *; do cd $x; echo "$x: $(git rev-parse --abbrev-ref HEAD)"; cd ..; done
+cd $pwd
