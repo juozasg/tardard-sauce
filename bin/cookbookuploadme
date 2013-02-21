@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+# executes a command on vagrant VM using VBoxManage guestcontrol
+
+book = File.basename(Dir.pwd)
+puts "Uploading: " + book
+# echo uploading $book;
+system("knife cookbook upload #{book} -o ..")
