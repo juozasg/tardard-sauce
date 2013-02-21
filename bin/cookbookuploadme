@@ -6,6 +6,6 @@ block_status = `knife block`
 selected = block_status.lines.find {|l| l =~ /Currently Selected/}
 server = selected.match(/\b(.+)\s\[/)[1]
 
-puts "Uploading: " + book + " to " + server
+puts "Uploading " + book + " to " + server
 
-puts system("knife cookbook upload #{book} -o ..")
+system("knife cookbook upload #{book} -o ..")
