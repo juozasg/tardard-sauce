@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+# executes knife but prints the environment first
+
+require 'pathname'
+book = File.basename(Dir.pwd)
+block_status = `knife block`
+server = Pathname.new(ENV['HOME'] + '/.chef/knife.rb').realpath.basename.to_s.gsub(/\..*$/, '').gsub('knife-', '')
+
+prod = (server =~ /prod/i)
+test = (server =~ /test/i)
+
+if prod
+  system("color red '* #{server} *'")
+elsif test
+  system("color yellow '* #{server} *'")
+else
+  system("color green '* #{server} *'")
+end
+
+exec("knife", *ARGV)
