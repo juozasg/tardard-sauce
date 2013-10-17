@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+# executes knife but prints the environment first
+
+require 'json'
+require 'pp'
+
+if ARGV[0].to_s.empty?
+puts "need JSON file to parse"
+exit
+end
+pp JSON.parse(File.read(ARGV[0]));1
+

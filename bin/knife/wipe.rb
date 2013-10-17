@@ -21,7 +21,12 @@ class Chef
           exit 1
         end
 
-        delete_object(Chef::Node, @client_name)
+        begin
+          delete_object(Chef::Node, @client_name)
+        rescue => e
+          p e
+        end
+
         delete_object(Chef::ApiClient, @client_name)
       end
 
